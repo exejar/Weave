@@ -1,3 +1,15 @@
+include("shared")
+include("v1.8")
+include("v1.7")
+include("v1.12")
 
-rootProject.name = "Weave"
+pluginManagement {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+        maven(url = "https://jitpack.io")
+    }
+}
 
+val projectName: String by settings
+rootProject.name = projectName

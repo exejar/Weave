@@ -1,18 +1,5 @@
-plugins {
-    kotlin("jvm") version "1.8.21"
-    application
-}
+val projectVersion: String by project
 
-group = "net.weavemc.weave"
-version = "1.0"
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-}
-
-application {
-    mainClass.set("MainKt")
+project.ext {
+    version = projectVersion
 }
