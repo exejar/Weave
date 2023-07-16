@@ -4,6 +4,4 @@ plugins {
 
 minecraft.version("1.8.9")
 
-dependencies {
-    implementation(project(rootProject.path))
-}
+dependencies.implementation(project(rootProject.path))
