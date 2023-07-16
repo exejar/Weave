@@ -1,4 +1,4 @@
-include("shared")
+include(rootProject.name)
 include("v1.8")
 include("v1.7")
 include("v1.12")

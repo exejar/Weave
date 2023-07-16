@@ -5,5 +5,5 @@ plugins {
 minecraft.version("1.7.10")
 
 dependencies {
-    implementation(project(":shared"))
+    implementation(project(rootProject.path))
 }
