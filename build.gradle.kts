@@ -12,6 +12,10 @@ plugins {
     application
 }
 
+subprojects {
+    apply(plugin = "org.jetbrains.kotlin.jvm")
+}
+
 repositories {
     mavenCentral()
     maven("https://jitpack.io")
