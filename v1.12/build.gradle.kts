@@ -4,4 +4,9 @@ plugins {
 
 minecraft.version("1.12.2")
 
+repositories {
+    mavenCentral()
+    maven("https://jitpack.io")
+}
+
 dependencies.implementation(project(rootProject.path))
