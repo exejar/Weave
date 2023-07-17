@@ -1,3 +1,5 @@
+@file:Suppress("invisible_reference", "invisible_member")
+
 package net.weavemc.weave.hooks
 
 import net.weavemc.loader.api.Hook
@@ -5,7 +7,6 @@ import net.weavemc.loader.api.event.WorldEvent
 import net.weavemc.loader.api.util.asm
 import net.weavemc.loader.util.callEvent
 import net.weavemc.loader.util.internalNameOf
-import jdk.internal.org.objectweb.asm.Type
 import org.objectweb.asm.tree.ClassNode
 import org.objectweb.asm.tree.LabelNode
 

@@ -1,9 +1,14 @@
+@file:Suppress("invisible_reference", "invisible_member")
+
 package net.weavemc.weave.hooks
 
 import net.weavemc.loader.api.Hook
 import net.weavemc.loader.api.event.CancellableEvent
 import net.weavemc.loader.api.event.ChatReceivedEvent
 import net.weavemc.loader.api.util.asm
+import net.weavemc.loader.util.callEvent
+import net.weavemc.loader.util.internalNameOf
+import net.weavemc.loader.util.named
 import org.objectweb.asm.tree.ClassNode
 import org.objectweb.asm.tree.LabelNode
 

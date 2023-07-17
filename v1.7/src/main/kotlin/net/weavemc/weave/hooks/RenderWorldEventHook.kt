@@ -1,4 +1,6 @@
-package net.weavemc.loader.hooks
+@file:Suppress("invisible_reference", "invisible_member")
+
+package net.weavemc.weave.hooks
 
 import net.weavemc.loader.api.Hook
 import net.weavemc.loader.api.event.RenderWorldEvent

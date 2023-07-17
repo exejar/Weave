@@ -14,6 +14,8 @@ plugins {
 
 subprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
+    repositories.maven("https://jitpack.io")
+    dependencies.implementation(project(rootProject.path))
 }
 
 repositories {
