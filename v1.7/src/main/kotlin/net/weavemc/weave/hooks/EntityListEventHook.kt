@@ -3,7 +3,6 @@
 package net.weavemc.weave.hooks
 
 import net.weavemc.loader.api.Hook
-import net.weavemc.loader.api.event.EntityListEvent
 import net.weavemc.loader.api.util.asm
 import net.weavemc.loader.util.callEvent
 import net.weavemc.loader.util.internalNameOf

@@ -2,8 +2,8 @@
 
 package net.weavemc.weave.hooks
 
+import KeyboardEvent
 import net.weavemc.loader.api.Hook
-import net.weavemc.loader.api.event.KeyboardEvent
 import net.weavemc.loader.api.util.asm
 import net.weavemc.loader.util.*
 import org.objectweb.asm.tree.ClassNode

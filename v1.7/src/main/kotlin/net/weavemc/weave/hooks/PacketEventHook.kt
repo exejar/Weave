@@ -2,9 +2,8 @@
 
 package net.weavemc.weave.hooks
 
+import CancellableEvent
 import net.weavemc.loader.api.Hook
-import net.weavemc.loader.api.event.CancellableEvent
-import net.weavemc.loader.api.event.PacketEvent
 import net.weavemc.loader.api.util.asm
 import net.weavemc.loader.util.callEvent
 import net.weavemc.loader.util.internalNameOf
@@ -14,7 +13,8 @@ import org.objectweb.asm.tree.LabelNode
 
 internal class PacketEventHook: Hook("net/minecraft/network/NetworkManager") {
     override fun transform(node: ClassNode, cfg: AssemblerConfig) {
-        node.methods.filter { it.name == "sendPacket" }.forEach {
+
+        node.methods.filter { it.name == "scheduleOutboundPacket" }.forEach {
             it.instructions.insert(asm {
                 new(internalNameOf<PacketEvent.Send>())
                 dup; dup

@@ -2,8 +2,8 @@
 
 package net.weavemc.weave.hooks
 
+import net.minecraft.client.gui.GuiPlayerInfo
 import net.weavemc.loader.api.Hook
-import net.weavemc.loader.api.event.PlayerListEvent
 import net.weavemc.loader.api.util.asm
 import net.weavemc.loader.util.callEvent
 import net.weavemc.loader.util.internalNameOf
@@ -20,7 +20,7 @@ internal class PlayerListEventHook : Hook("net/minecraft/client/network/NetHandl
             invokespecial(
                 internalNameOf<PlayerListEvent.Add>(),
                 "<init>",
-                "(Lnet/minecraft/network/play/server/S38PacketPlayerListItem\$AddPlayerData;)V"
+                "(L${internalNameOf<GuiPlayerInfo>()};)V"
             )
             callEvent()
         }
@@ -32,7 +32,7 @@ internal class PlayerListEventHook : Hook("net/minecraft/client/network/NetHandl
             invokespecial(
                 internalNameOf<PlayerListEvent.Remove>(),
                 "<init>",
-                "(Lnet/minecraft/network/play/server/S38PacketPlayerListItem\$AddPlayerData;)V"
+                "(L${internalNameOf<GuiPlayerInfo>()};)V"
             )
             callEvent()
         }

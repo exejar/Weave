@@ -2,8 +2,10 @@
 
 package net.weavemc.weave.hooks
 
+import net.minecraft.client.Minecraft
+import net.minecraft.client.multiplayer.WorldClient
+import net.minecraft.world.World
 import net.weavemc.loader.api.Hook
-import net.weavemc.loader.api.event.WorldEvent
 import net.weavemc.loader.api.util.asm
 import net.weavemc.loader.util.callEvent
 import net.weavemc.loader.util.internalNameOf
@@ -22,19 +24,31 @@ internal class WorldEventHook: Hook("net/minecraft/client/Minecraft") {
      */
     override fun transform(node: ClassNode, cfg: AssemblerConfig) {
         node.methods.find {
-            it.name == "loadWorld" && it.desc == "(Lnet/minecraft/client/multiplayer/WorldClient;Ljava/lang/String;)V"
+            it.name == "loadWorld" && it.desc == "(L${internalNameOf<WorldClient>()};Ljava/lang/String;)V"
         }!!.instructions.insert(asm {
             val lbl = LabelNode()
 
             aload(0)
-            getfield("net/minecraft/client/Minecraft", "theWorld", "Lnet/minecraft/client/multiplayer/WorldClient;")
+            getfield(
+                internalNameOf<Minecraft>(),
+                "theWorld",
+                "L${internalNameOf<WorldClient>()};"
+            )
             ifnull(lbl)
 
             new(internalNameOf<WorldEvent.Unload>())
             dup
             aload(0)
-            getfield("net/minecraft/client/Minecraft", "theWorld", "Lnet/minecraft/client/multiplayer/WorldClient;")
-            invokespecial(internalNameOf<WorldEvent.Unload>(), "<init>", "(Lnet/minecraft/world/World;)V")
+            getfield(
+                internalNameOf<Minecraft>(),
+                "theWorld",
+                "L${internalNameOf<WorldClient>()};"
+            )
+            invokespecial(
+                internalNameOf<WorldEvent.Unload>(),
+                "<init>",
+                "(L${internalNameOf<World>()};)V"
+            )
             callEvent()
 
             +lbl
@@ -47,7 +61,11 @@ internal class WorldEventHook: Hook("net/minecraft/client/Minecraft") {
             new(internalNameOf<WorldEvent.Load>())
             dup
             aload(1)
-            invokespecial(internalNameOf<WorldEvent.Load>(), "<init>", "(Lnet/minecraft/world/World;)V")
+            invokespecial(
+                internalNameOf<WorldEvent.Load>(),
+                "<init>",
+                "(L${internalNameOf<World>()};)V"
+            )
             callEvent()
 
             +end

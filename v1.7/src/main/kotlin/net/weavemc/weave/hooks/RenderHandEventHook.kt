@@ -2,9 +2,9 @@
 
 package net.weavemc.weave.hooks
 
+import CancellableEvent
+import RenderHandEvent
 import net.weavemc.loader.api.Hook
-import net.weavemc.loader.api.event.CancellableEvent
-import net.weavemc.loader.api.event.RenderHandEvent
 import net.weavemc.loader.api.util.asm
 import net.weavemc.loader.util.*
 import org.objectweb.asm.Opcodes
@@ -14,7 +14,7 @@ import org.objectweb.asm.tree.LdcInsnNode
 
 internal class RenderHandEventHook : Hook("net/minecraft/client/renderer/EntityRenderer") {
     override fun transform(node: ClassNode, cfg: AssemblerConfig) {
-        val renderWorldPass = node.methods.named("renderWorldPass")
+        val renderWorldPass = node.methods.named("renderWorld")
 
         val ifeq = renderWorldPass.instructions.find {
             it is LdcInsnNode && it.cst == "hand"
@@ -25,7 +25,7 @@ internal class RenderHandEventHook : Hook("net/minecraft/client/renderer/EntityR
             asm {
                 new(internalNameOf<RenderHandEvent>())
                 dup; dup
-                fload(2)
+                fload(1)
                 invokespecial(internalNameOf<RenderHandEvent>(), "<init>", "(F)V")
 
                 callEvent()

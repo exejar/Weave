@@ -2,9 +2,9 @@
 
 package net.weavemc.weave.hooks
 
+import CancellableEvent
+import ChatReceivedEvent
 import net.weavemc.loader.api.Hook
-import net.weavemc.loader.api.event.CancellableEvent
-import net.weavemc.loader.api.event.ChatReceivedEvent
 import net.weavemc.loader.api.util.asm
 import net.weavemc.loader.util.callEvent
 import net.weavemc.loader.util.internalNameOf

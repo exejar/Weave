@@ -2,9 +2,10 @@
 
 package net.weavemc.weave.hooks
 
+import CancellableEvent
+import net.minecraft.client.renderer.entity.RendererLivingEntity
+import net.minecraft.entity.EntityLivingBase
 import net.weavemc.loader.api.Hook
-import net.weavemc.loader.api.event.CancellableEvent
-import net.weavemc.loader.api.event.RenderLivingEvent
 import net.weavemc.loader.api.util.asm
 import net.weavemc.loader.util.callEvent
 import net.weavemc.loader.util.internalNameOf
@@ -38,8 +39,8 @@ internal class RenderLivingEventHook : Hook("net/minecraft/client/renderer/entit
             invokespecial(
                 internalNameOf<RenderLivingEvent.Pre>(),
                 "<init>",
-                "(Lnet/minecraft/client/renderer/entity/RendererLivingEntity;" +
-                        "Lnet/minecraft/entity/EntityLivingBase;" +
+                "(L${internalNameOf<RendererLivingEntity>()};" +
+                        "L${internalNameOf<EntityLivingBase>()};" +
                         "D" +
                         "D" +
                         "D" +
@@ -70,8 +71,8 @@ internal class RenderLivingEventHook : Hook("net/minecraft/client/renderer/entit
             invokespecial(
                 internalNameOf<RenderLivingEvent.Post>(),
                 "<init>",
-                "(Lnet/minecraft/client/renderer/entity/RendererLivingEntity;" +
-                    "Lnet/minecraft/entity/EntityLivingBase;" +
+                "(L${internalNameOf<RendererLivingEntity>()};" +
+                    "L${internalNameOf<EntityLivingBase>()};" +
                     "D" +
                     "D" +
                     "D" +
