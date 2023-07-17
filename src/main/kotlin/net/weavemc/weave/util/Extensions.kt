@@ -1,9 +1,7 @@
 package net.weavemc.weave.util
 
-
 import net.weavemc.loader.api.event.Event
 import net.weavemc.loader.api.event.EventBus
-import net.weavemc.loader.api.util.InsnBuilder
 import org.objectweb.asm.ClassWriter
 import org.objectweb.asm.Type
 import org.objectweb.asm.tree.AbstractInsnNode
