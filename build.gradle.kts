@@ -29,5 +29,5 @@ dependencies {
     api(libs.asm)
     api(libs.asmtree)
     api(libs.asmutil)
-    api("com.github.weave-mc:weave-loader:70bd82faa6")
+    api(libs.loader)
 }
