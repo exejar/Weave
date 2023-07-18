@@ -8,11 +8,13 @@ project.ext {
 }
 
 plugins {
-    kotlin("jvm") version "1.8.21"
     application
+    id("com.github.weave-mc.weave-gradle") version "bcf6ab0279" apply false
+    kotlin("jvm") version "1.8.21"
 }
 
 subprojects {
+    apply(plugin = "com.github.weave-mc.weave-gradle")
     apply(plugin = "org.jetbrains.kotlin.jvm")
     repositories.maven("https://jitpack.io")
     dependencies.implementation(project(rootProject.path))
