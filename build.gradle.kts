@@ -1,3 +1,5 @@
+@file:Suppress("COMPATIBILITY_WARNING")
+
 val projectVersion: String by project
 val projectGroup:   String by project
 
@@ -16,7 +18,7 @@ subprojects {
     apply(plugin = "com.github.weave-mc.weave-gradle")
     apply(plugin = "org.jetbrains.kotlin.jvm")
     repositories.maven("https://jitpack.io")
-    dependencies.compileOnly(project(rootProject.path))
+    dependencies.compileOnly(rootProject.path)
 }
 
 repositories {
