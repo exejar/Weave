@@ -1,4 +1,3 @@
-val projectName:    String by project
 val projectVersion: String by project
 val projectGroup:   String by project
 
@@ -17,7 +16,7 @@ subprojects {
     apply(plugin = "com.github.weave-mc.weave-gradle")
     apply(plugin = "org.jetbrains.kotlin.jvm")
     repositories.maven("https://jitpack.io")
-    dependencies.implementation(project(rootProject.path))
+    dependencies.compileOnly(project(rootProject.path))
 }
 
 repositories {
